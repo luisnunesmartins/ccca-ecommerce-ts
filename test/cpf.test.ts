@@ -1,57 +1,57 @@
-import { validate } from '../src/cpf';
+import { cpfValidate } from '../src/cpf';
 
 test("Valid CPF", function () {
-    const isCpfValid = validate('43299293842');
+    const isCpfValid = cpfValidate('43299293842');
     expect(isCpfValid).toBe(true);
 });
 
 test("Valid CPF with points", function () {
-    const isCpfValid = validate('432.992.938-42');
+    const isCpfValid = cpfValidate('432.992.938-42');
     expect(isCpfValid).toBe(true);
 });
 
 test("Invalid CPF with spaces", function () {
-    const isCpfValid = validate('432  293842');
+    const isCpfValid = cpfValidate('432  293842');
     expect(isCpfValid).toBe(false);
 });
 
 test("Invalid CPF", function () {
-    const isCpfValid = validate('43299293841');
+    const isCpfValid = cpfValidate('43299293841');
     expect(isCpfValid).toBe(false);
 });
 
 test("Invalid CPF equal numbers", function () {
-    const isCpfValid = validate('22222222222');
+    const isCpfValid = cpfValidate('22222222222');
     expect(isCpfValid).toBe(false);
 });
 
 test("Null CPF", function () {
-    const isCpfValid = validate(null);
+    const isCpfValid = cpfValidate(null);
     expect(isCpfValid).toBe(false);
 });
 
 test("Empty CPF", function () {
-    const isCpfValid = validate('');
+    const isCpfValid = cpfValidate('');
     expect(isCpfValid).toBe(false);
 });
 
 test("Undefined CPF", function () {
-    const isCpfValid = validate(undefined);
+    const isCpfValid = cpfValidate(undefined);
     expect(isCpfValid).toBe(false);
 });
 
 test("CPF less than 11 digits", function () {
-    const isCpfValid = validate('432992938');
+    const isCpfValid = cpfValidate('432992938');
     expect(isCpfValid).toBe(false);
 });
 
 test("CPF more than 14 digits", function () {
-    const isCpfValid = validate('432992938422222');
+    const isCpfValid = cpfValidate('432992938422222');
     expect(isCpfValid).toBe(false);
 });
 
 test("CPF more than 14 digits with points", function () {
-    const isCpfValid = validate('432.992.938-422');
+    const isCpfValid = cpfValidate('432.992.938-422');
     expect(isCpfValid).toBe(false);
 });
 
